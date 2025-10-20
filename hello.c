@@ -59,9 +59,9 @@ int getValidInput() {
 
 int main() {
     int choice;
-    int i=0, j=0, k=0, n=0, rows=0, num=0;
+    int i = 0, j = 0, k = 0, n = 0, rows = 0, num = 0;
 
-    while(1){
+    while(1) {
         printf("\n");
         printTop();
         printf("%c          MAIN MENU           %c\n", 186, 186);
@@ -77,59 +77,49 @@ int main() {
 
         printf("Enter Choice: ");
         choice = getValidInput();
-        
-        switch(choice){
-            case 1: 
-                for(i=1; i<6; i++){
-                    for(j=1; j<=i; j++){
-                        printf(" ");   
-                    }
-                    for(k=5; k>=i; k--){
-                        printf("*");
-                    }
-                    printf("\n");
-                }    
-                break;
-        
-            case 2:
-                for(i=1; i<6; i++){
-                    for(j=5; j>=i; j--){
-                        printf(" ");
-                    }
-                    for(k=1; k<=i; k++){
-                        printf("*");
-                    }
-                    printf("\n");
+
+        if (choice == 1) { 
+            for(i = 1; i < 6; i++) {
+                for(j = 1; j <= i; j++) {
+                    printf(" ");   
                 }
-                break;
-        
-            case 3:
-                printf("Enter the number of Fibonacci numbers you want: ");
-                n = getValidInput();
-                fibonacci(n);
-                break;
-        
-            case 4:
-                printf("Enter the number of rows: ");
-                rows = getValidInput();
-                printPascalsTriangle(rows);
-                break;
-        
-            case 5:
-                printf("Exiting program...\n");
-                printf("Do you want to try again?\n0=Yes 1=No: ");
-                num = getValidInput();
-                if (num == 1){
-                    printf("Goodbye!\n");
-                    return 0;
+                for(k = 5; k >= i; k--) {
+                    printf("*");
                 }
-                break;
+                printf("\n");
+            }
+        } else if (choice == 2) {
+            for(i = 1; i < 6; i++) {
+                for(j = 5; j >= i; j--) {
+                    printf(" ");
+                }
+                for(k = 1; k <= i; k++) {
+                    printf("*");
+                }
+                printf("\n");
+            }
+        } else if (choice == 3) {
+            printf("Enter the number of Fibonacci numbers you want: ");
+            n = getValidInput();
+            fibonacci(n);
+        } else if (choice == 4) {
+            printf("Enter the number of rows: ");
+            rows = getValidInput();
+            printPascalsTriangle(rows);
+        } else if (choice == 5) {
+            printf("Exiting program...\n");
             
-            default:
-                printf("Invalid Choice. Please try again\n");
-                break;
+        } else {
+            printf("Invalid Choice. Please try again\n");
+            continue; 
+        }
+        printf("\nDo you want to try again? (0=Yes, 1=No):\n 1");
+        num = getValidInput();
+        if (num == 1) {
+            printf("Goodbye!\n");
+            break; 
         }
     }
+    
     return 0;
-
 }
